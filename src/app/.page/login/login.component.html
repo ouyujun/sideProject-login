@@ -1,0 +1,15 @@
+<form (ngSubmit)="onLogin()" #form="ngForm">
+    <p>
+        <label>帳號：</label>
+        <input type="text" ngModel name="username" >
+    </p>
+    <p>
+        <label>密碼：</label>
+        <input type="password" ngModel name="password">
+    </p>
+    <p>
+        <button type="submit">Log in</button>
+    </p>
+    <p>{{form.value | json}}</p> 
+    <!-- //預覽資料狀況 -->
+</form>
