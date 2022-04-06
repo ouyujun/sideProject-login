@@ -6,7 +6,6 @@ import { IndexComponent } from './.page/index/index.component';
 import { PageAComponent } from './.page/page-a/page-a.component';
 import { PageBComponent } from './.page/page-b/page-b.component';
 import { LoginComponent } from './.page/login/login.component';
-
 const routes: Routes = [
   {
     path: '', //<--注意自己建立會寫錯成：'/'而導致顯示不出來，正確的是：''．
@@ -26,4 +25,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { enableTracing: false })], // <-- debugging purposes only (路由紀錄)
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+
+}
