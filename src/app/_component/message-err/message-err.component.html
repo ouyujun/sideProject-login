@@ -1,1 +1,19 @@
-<span class="error-message">{{ element }}</span> <!--hint記得改成元件-->
+<div *ngIf="element.invalid && (element.dirty || element.touched)">
+    <div class="err" *ngIf="element.errors?.['required']">
+        此欄位必填
+    </div>
+    <div class="err" *ngIf="element.errors?.['minlength']">
+        最少6字元
+    </div>
+    <div class="err" *ngIf="element.errors?.['maxlength']">
+        最多10字元
+    </div>
+    <div class="err" *ngIf="element.errors?.['email']">
+        請依照郵件格式
+    </div>
+
+    <!--自定義範例-->
+    <div *ngIf="element.errors?.['forbiddenName']">
+        Name cannot be Bob.
+    </div>
+</div>

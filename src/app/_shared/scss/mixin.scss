@@ -1,0 +1,9 @@
+@import './base.scss';
+@mixin bg_color() {
+  :host-context([data-theme='blue']) & {
+    background-color: $background-color-blue;
+  }
+  :host-context([data-theme='black']) & {
+    background-color: $background-color-black;
+  }
+}

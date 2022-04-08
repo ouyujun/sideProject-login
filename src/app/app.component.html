@@ -1,3 +1,10 @@
-<div class="bg">
+<!-- <div class="bg" [ngClass]="use? 'light':'dark'">
   <router-outlet></router-outlet>
-</div>
+</div> -->
+
+<body data-theme-style="dark">
+  <div class="bg">
+    <router-outlet></router-outlet>
+    <button class="btn" (click)="changeTheme()">{{theme | uppercase}}</button>
+  </div>
+</body>

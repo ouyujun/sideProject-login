@@ -13,7 +13,11 @@ export class CatchApiService {
   constructor(private http: HttpClient) {}
 
   configUrl = '../../assets/member.json';
+  config2Url = '../../assets/memberinfo.json';
   getMember():Observable<any>{
     return this.http.get<any>(this.configUrl);
+  }
+  getMemberInfo():Observable<any>{
+    return this.http.get<any>(this.config2Url);
   }
 }
