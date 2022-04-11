@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { MembersList } from '../../_shared/model/members'
 
 import { NgForm } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -13,37 +13,27 @@ import { Subscription } from 'rxjs';
 })
 
 export class LoginComponent implements OnInit {
-  @ViewChild('myForm',{static: false}) myform!: NgForm;
+  @ViewChild('myForm', { static: false }) myform!: NgForm;
 
-  private isLoginSub$!: Subscription; 
   loginModel = new MembersList();
-  isLogin:boolean=true;
+  isLoggedIn!: boolean;
+  constructor(private MemberService: MemberManagedService) {
+    MemberService.isLoggedIn().subscribe((res: boolean) => {
+      this.isLoggedIn=res;
+    });
 
-  constructor(private router: Router, private MemberService: MemberManagedService) { }
+  }
 
-  ngOnInit(): void { 
-      this.isLoginSub$=this.MemberService.isLogin$.subscribe((res: boolean) => {
-        if (res) { //service
-          localStorage.setItem('suecess', this.loginModel.email);
-          this.myform.reset();
-          this.router.navigate(['./page1']);
-          this.isLogin=res;
-          return
-        } else{
-          this.isLogin=false;
-        }
-      })
-  }
-  ngOnDestroy() { //取消訂閱
-    this.isLoginSub$.unsubscribe();
-  }
+  ngOnInit(): void { }
+
   onLogin(): void {
     if (!this.myform.valid) {
       this.myform.form.markAllAsTouched();
       return
     } else {
-      this.MemberService.doCompareWithMember(this.loginModel);
+      this.MemberService.login(this.loginModel);
     }
+
   }
 }
 

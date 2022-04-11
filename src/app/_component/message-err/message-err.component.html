@@ -11,6 +11,9 @@
     <div class="err" *ngIf="element.errors?.['email']">
         請依照郵件格式
     </div>
+    <div class="err" *ngIf="element.errors?.['newMailRulesName']">
+        請依照郵件格式，字首大寫。
+    </div>
 
     <!--自定義範例-->
     <div *ngIf="element.errors?.['forbiddenName']">

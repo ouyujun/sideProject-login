@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MemberManagedService } from 'src/app/_shared/service/member-managed.service';
 
 @Component({
   selector: 'app-index',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent implements OnInit {
-
-  constructor() { }
+  constructor(private mainService: MemberManagedService) {
+  }
 
   ngOnInit(): void {
   }

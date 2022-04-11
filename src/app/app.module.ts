@@ -14,6 +14,7 @@ import { HeaderComponent } from './_component/header/header.component';
 import { SidebarLeftComponent } from './_component/sidebar-left/sidebar-left.component';
 import { FooderComponent } from './_component/fooder/fooder.component';
 import { MessageErrComponent } from './_component/message-err/message-err.component';
+import { newMailRules } from './_shared/directive/email.directive';
 
 
 
@@ -27,7 +28,8 @@ import { MessageErrComponent } from './_component/message-err/message-err.compon
     HeaderComponent,
     SidebarLeftComponent,
     FooderComponent,
-    MessageErrComponent
+    MessageErrComponent,
+    newMailRules
   ],
   imports: [
     BrowserModule,

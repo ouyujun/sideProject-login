@@ -2,7 +2,7 @@
     box-sizing      : border-box;
     max-width       : 100vw;
     min-height      : 100vh;
-    background-color: #ededed;
+    background-color: var(--wrapper);
     .header {
         box-sizing      : border-box;
         position        : absolute;
@@ -12,8 +12,7 @@
         padding         : 10px;
         width           : 100%;
         height          : 5%;
-        background-color: rgb(98, 141, 242);
-
+        background-color: var(--header);
     }
 
     .sidebar-left {
@@ -48,6 +47,6 @@
         width           : 100%;
         height          : 5%;
         // float: left;
-        background-color: rgba(106, 135, 201, 0.275);
+        background-color: var(--footer);
     }
 }
