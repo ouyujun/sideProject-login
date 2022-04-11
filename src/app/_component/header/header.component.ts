@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { MemberManagedService } from 'src/app/_shared/service/member-managed.service';
 
 @Component({
@@ -7,14 +9,16 @@ import { MemberManagedService } from 'src/app/_shared/service/member-managed.ser
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-@Input ('isLogin')element!:{login:boolean};
-  constructor(private managedService: MemberManagedService) { }
-  name: string = "歐俞均";
-  status: string = 'online';
-  ngOnInit(): void {
-    // this.managedService.isLoginSubject.subscribe((res: boolean) => {
-    //   if (res) { this.status = "online"  } else { this.status = "offline" }
-    // })
+  isUserMail: string | null=null;
+  constructor(private managedService: MemberManagedService) {
+    this.managedService.isUserMail.subscribe((res: string | null) => {
+      this.isUserMail = res;
+    })
+  }
+  status: string = !this.isUserMail ? 'on' : 'off';
+  ngOnInit(): void { }
+  onLogOut() {
+    this.managedService.logout();
   }
 
 }

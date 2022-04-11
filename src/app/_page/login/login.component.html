@@ -2,12 +2,11 @@
     <!--how to get elment-->
     <p>
         <label for="email">帳號：</label>
-        <input type="email" class="form-control" id="email" required="true" newMailRulesName [(ngModel)]="loginModel.email"
+        <input type="email" class="form-control" id="email" newMailRulesName required [(ngModel)]="loginModel.email"
             name="email" #email="ngModel">
-
         <app-message-err [element]="email"></app-message-err>
     </p>
-    <p class="err" *ngIf="!isLoggedIn">帳號或密碼錯誤</p>
+    <p class="err" *ngIf="isUserErr">帳號或密碼錯誤</p>
     <p>TODO: remove this: {{loginModel.email}}</p>
     <p>
         <label for="password">密碼：</label>

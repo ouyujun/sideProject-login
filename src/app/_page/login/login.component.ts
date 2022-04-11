@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MemberManagedService } from 'src/app/_shared/service/member-managed.service';
-import { Router } from '@angular/router';
 import { MembersList } from '../../_shared/model/members'
 
 import { NgForm } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -16,16 +14,18 @@ export class LoginComponent implements OnInit {
   @ViewChild('myForm', { static: false }) myform!: NgForm;
 
   loginModel = new MembersList();
-  isLoggedIn!: boolean;
+  isUserMail!: string | null;
+  isUserErr: boolean | null = null;
   constructor(private MemberService: MemberManagedService) {
-    MemberService.isLoggedIn().subscribe((res: boolean) => {
-      this.isLoggedIn=res;
+    MemberService.isUserMail.subscribe((res: string | null) => {
+      this.isUserMail = res;
+    });
+    MemberService.isUserErr.subscribe((res: boolean) => {
+      this.isUserErr = res;
     });
 
   }
-
   ngOnInit(): void { }
-
   onLogin(): void {
     if (!this.myform.valid) {
       this.myform.form.markAllAsTouched();
@@ -33,7 +33,5 @@ export class LoginComponent implements OnInit {
     } else {
       this.MemberService.login(this.loginModel);
     }
-
   }
 }
-
