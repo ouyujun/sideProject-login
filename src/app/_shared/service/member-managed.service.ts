@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { MembersList } from '../model/members';
+import { MembersList, userState } from '../model/members';
 import { CatchApiService } from '../service/catch-api.service'
 
 @Injectable({
@@ -10,8 +10,7 @@ import { CatchApiService } from '../service/catch-api.service'
 export class MemberManagedService {
 
   constructor(private mainservice: CatchApiService, private router: Router) { }
-  isUserMail = new BehaviorSubject<string | null>(null);
-  isUserErr = new BehaviorSubject<boolean>(false);
+  isUser = new BehaviorSubject<userState>(new userState);
 
   /**
   *  登入使用者，並通知所有訂閱者
@@ -22,14 +21,11 @@ export class MemberManagedService {
       if (group) {
         const rule = res.findIndex((item: MembersList) => item.email === group.email && item.password === group.password) !== -1;
         if (rule) {
-          this.isUserMail.next(group.email);
-          this.isUserErr.next(false);
-          console.log(this.isUserMail.getValue())
+          this.isUser.next({ userMail: group.email, userState: false })
           this.router.navigate(['./page1']);
           return
         } else {
-          this.isUserMail.next(null);
-          this.isUserErr.next(true);
+          this.isUser.next({ userMail: null, userState: true })
         }
       }
     });
@@ -39,8 +35,7 @@ export class MemberManagedService {
   * 登出使用者，並通知所有訂閱者
   */
   logout(): void {
-    this.isUserMail.next(null);
-    this.isUserErr.next(false);
+    this.isUser.next({ userMail: null, userState: false })
     this.router.navigate(['./login']);
   }
 

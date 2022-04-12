@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { userState } from 'src/app/_shared/model/members';
 import { MemberManagedService } from 'src/app/_shared/service/member-managed.service';
 
 @Component({
@@ -9,13 +8,9 @@ import { MemberManagedService } from 'src/app/_shared/service/member-managed.ser
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  isUserMail: string | null=null;
-  constructor(private managedService: MemberManagedService) {
-    this.managedService.isUserMail.subscribe((res: string | null) => {
-      this.isUserMail = res;
-    })
-  }
-  status: string = !this.isUserMail ? 'on' : 'off';
+  @Input('userMail') element!: string | null;
+  constructor(private managedService: MemberManagedService) { }
+  status: string = !this.element ? 'on' : 'off';
   ngOnInit(): void { }
   onLogOut() {
     this.managedService.logout();

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { userState } from 'src/app/_shared/model/members';
 import { MemberManagedService } from 'src/app/_shared/service/member-managed.service';
 
 @Component({
@@ -7,15 +8,20 @@ import { MemberManagedService } from 'src/app/_shared/service/member-managed.ser
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss']
 })
-export class IndexComponent implements OnInit {
+export class IndexComponent implements OnInit, OnDestroy {
   isUserMail!: string | null;
-  constructor(private mainService: MemberManagedService) {
-    this.mainService.isUserMail.subscribe((res: string | null) => {
-      this.isUserMail = res;
-    });
-  }
+  subscription!: Subscription;
 
+  constructor(private MemberService: MemberManagedService) {
+    this.subscription = this.MemberService.isUser.subscribe((res: userState) => {
+      this.isUserMail = res.userMail;
+    })
+  }
   ngOnInit(): void {
   }
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
+
 
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MemberManagedService } from 'src/app/_shared/service/member-managed.service';
-import { MembersList } from '../../_shared/model/members'
+import { MembersList, userState } from '../../_shared/model/members'
 
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -10,22 +11,28 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('myForm', { static: false }) myform!: NgForm;
 
   loginModel = new MembersList();
-  isUserMail!: string | null;
-  isUserErr: boolean | null = null;
+  isUserInfo = new userState();
+
+  subscription!: Subscription;
+
   constructor(private MemberService: MemberManagedService) {
-    MemberService.isUserMail.subscribe((res: string | null) => {
-      this.isUserMail = res;
-    });
-    MemberService.isUserErr.subscribe((res: boolean) => {
-      this.isUserErr = res;
-    });
+    this.subscription = this.MemberService.isUser.subscribe((res: userState) => {
+      this.isUserInfo.userMail = res.userMail;
+      this.isUserInfo.userState = res.userState;
+    })
+
 
   }
   ngOnInit(): void { }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   onLogin(): void {
     if (!this.myform.valid) {
       this.myform.form.markAllAsTouched();

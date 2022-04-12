@@ -1,6 +1,6 @@
-<div class="wrapper" *ngIf="isUserMail">
+<div class="wrapper">
     <div class="header" >
-        <app-header></app-header>
+        <app-header [userMail]="isUserMail"></app-header>
     </div>
     <div class="sidebar-left">
         <app-sidebar-left></app-sidebar-left>
