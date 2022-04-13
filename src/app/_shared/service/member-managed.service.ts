@@ -9,8 +9,8 @@ import { CatchApiService } from '../service/catch-api.service'
 })
 export class MemberManagedService {
 
+  isUser = new BehaviorSubject<userState>(new userState());
   constructor(private mainservice: CatchApiService, private router: Router) { }
-  isUser = new BehaviorSubject<userState>(new userState);
 
   /**
   *  登入使用者，並通知所有訂閱者
@@ -25,7 +25,7 @@ export class MemberManagedService {
           this.router.navigate(['./page1']);
           return
         } else {
-          this.isUser.next({ userMail: null, userState: true })
+          this.isUser.next(new userState())
         }
       }
     });
@@ -35,7 +35,7 @@ export class MemberManagedService {
   * 登出使用者，並通知所有訂閱者
   */
   logout(): void {
-    this.isUser.next({ userMail: null, userState: false })
+    this.isUser.next(new userState())
     this.router.navigate(['./login']);
   }
 
