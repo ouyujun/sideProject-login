@@ -1,0 +1,29 @@
+:root{
+    --bg : #fff;
+    --font : #333;
+    --header : rgb(98, 141, 242);
+    --wrapper : #ededed;
+    --footer : #bbb;
+    --page : #fff;
+    --err : darkred;
+    --abc: green;
+}
+.light{
+    --bg : #fff;
+    --font : #333;
+    --header : rgb(98, 141, 242);
+    --wrapper : #ededed;
+    --footer : #bbb;
+    --page : #fff;
+    --err : darkred;
+    --abc: green;
+}
+.dark{
+    --bg : #333;
+    --font : #fff,
+    --header : rgb(78, 110, 184);
+    --wrapper : #888;
+    --footer : #333;
+    --page : #bbb;
+    --err : rgb(222, 99, 99);
+}

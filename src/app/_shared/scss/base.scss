@@ -1,11 +1,15 @@
-$theme-config:(light:(--bg : #fff,
+$theme-config:(
+    light:(
+        --bg : #fff,
         --font : #333,
         --header : rgb(98, 141, 242),
         --wrapper : #ededed,
         --footer : #bbb,
         --page : #fff,
         --err : darkred,
-    ), dark:(--bg : #333,
+        --abc: green
+    ), dark:(
+        --bg : #333,
         --font : #fff,
         --header : rgb(78, 110, 184),
         --wrapper : #888,
@@ -14,23 +18,15 @@ $theme-config:(light:(--bg : #fff,
         --err : rgb(222, 99, 99),
     ), );
 
-@each $name,
-$value in $theme-config {
-    :root {
-        .#{$name}{
-            @each $keyj,$valuej in $value {
-                #{$keyj}:$valuej;
+    //存成另一個變數  動態變數
+:root {
+    @each $theme,
+    $colorMap in $theme-config {
+        .#{$theme} {
+            @each $colorKey,
+            $colorValue in $colorMap {
+                #{$colorKey}: $colorValue;
             }
         }
     }
 }
-
-// @mixin styleList($content) {}
-
-
-// 333, #fff, rgb(78, 110, 184), #888, #333, #bbb, rgb(222, 99, 99)
-
-
-// :root {
-//     @include name();
-// }
