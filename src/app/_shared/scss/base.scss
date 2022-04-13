@@ -16,24 +16,11 @@ $theme-config:(light:(--bg : #fff,
 
 @each $name,
 $value in $theme-config {
-    // $content: map-get($map:$theme-config, $key:--bg,--font,--header,--wrapper,--footer,--page,--);
-    $bg     : map-get($map:$value, $key:--bg);
-    $font   : map-get($map:$value, $key:--font);
-    $header : map-get($map:$value, $key:--header);
-    $header : map-get($map:$value, $key:--header);
-    $wrapper: map-get($map:$value, $key:--wrapper);
-    $footer : map-get($map:$value, $key:--footer);
-    $page   : map-get($map:$value, $key:--page);
-    $err    : map-get($map:$value, $key:--err);
     :root {
-        .#{$name} {
-            --bg     :#{$bg};
-            --font   :#{$font};
-            --header :#{$header};
-            --wrapper:#{$wrapper};
-            --footer :#{$footer};
-            --page   :#{$page};
-            --err    :#{$err};
+        .#{$name}{
+            @each $keyj,$valuej in $value {
+                #{$keyj}:$valuej;
+            }
         }
     }
 }
