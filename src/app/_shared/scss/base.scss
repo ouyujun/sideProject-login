@@ -7,21 +7,21 @@ $page    : --page;
 $err     : --err;
 $abc     : --abc;
 
-$light-theme-config:(light:(--bg : #fff,
-        --font : #333,
-        --header : rgb(98, 141, 242),
-        --wrapper : #ededed,
-        --footer : #bbb,
-        --page : #fff,
-        --err : darkred,
-        --abc:green), );
-$dark-theme-config:(dark:(--bg : #333,
-        --font : #fff,
-        --header : rgb(78, 110, 184),
-        --wrapper : #888,
-        --footer : #333,
-        --page : #bbb,
-        --err : rgb(222, 99, 99),
+$light-theme-config:(light:($bg : #fff,
+        $font : #333,
+        $header : rgb(98, 141, 242),
+        $wrapper : #ededed,
+        $footer : #bbb,
+        $page : #fff,
+        $err : darkred,
+        $abc:green), );
+$dark-theme-config:(dark:($bg : #333,
+        $font : #fff,
+        $header : rgb(78, 110, 184),
+        $wrapper : #888,
+        $footer : #333,
+        $page : #bbb,
+        $err : rgb(222, 99, 99),
     ), );
 
 
@@ -29,11 +29,10 @@ $dark-theme-config:(dark:(--bg : #333,
 //存成另一個變數  動態變數
 :root {
     $light: map-merge($light-theme-config, $dark-theme-config);
-
+    
     @each $theme,
     $colorMap in $light {
         .#{$theme} {
-
             @each $colorKey,
             $colorValue in $colorMap {
                 #{$colorKey}: $colorValue;
@@ -42,6 +41,10 @@ $dark-theme-config:(dark:(--bg : #333,
     }
 }
 
+// 核對筆數
+
 p {
-    color: var(--abc);
+    color: --abc;
+    //function抓--abc比對有沒有
+    //1.
 }

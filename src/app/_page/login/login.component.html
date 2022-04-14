@@ -11,7 +11,7 @@
     <p>
         <label for="password">密碼：</label>
         <input type="password" class="form-control" id="password" required [(ngModel)]="loginModel.password"
-            minlength="6" maxlength="10" name="password" #password="ngModel">
+            minlength="6" maxlength="10" name="password" #password="ngModel" autocomplete>
         <app-message-err [element]="password"></app-message-err>
     </p>
     <p>TODO: remove this: {{loginModel.password}}</p>
