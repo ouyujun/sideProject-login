@@ -1,7 +1,218 @@
-<div class="page-body" >
+<div class="page-body">
+  <button type="button btn-edit" (click)="showAddRecMedi()">新增紀錄</button>
+  <form #myForm="ngForm">
     <table>
+      <thead>
         <tr>
-            <td>1111</td>
+          <th *ngFor="let item of cloum.recMediField">{{ item }}</th>
         </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of recMediResult; let key = index">
+          <td>
+            <!--OrgAccount-->
+            <ng-container *ngIf="item.actionType; else OrgAccountList">
+              <input
+                type="text"
+                class="form-control"
+                id="OrgAccount"
+                required
+                [(ngModel)]="item.OrgAccount"
+                name="OrgAccount"
+                #OrgAccount="ngModel"
+              />
+              <app-message-err [element]="OrgAccount"></app-message-err>
+            </ng-container>
+            <ng-template #OrgAccountList> {{ item.OrgAccount }} </ng-template>
+          </td>
+          <td>
+            <!--No-->
+            <ng-container *ngIf="item.actionType; else NoList">
+              <input type="text" class="form-control" id="No" required [(ngModel)]="item.No" name="No" #No="ngModel" />
+              <app-message-err [element]="No"></app-message-err>
+            </ng-container>
+            <ng-template #NoList> {{ item.No }}</ng-template>
+          </td>
+          <td>
+            <!--StartDate-->
+            <ng-container *ngIf="item.actionType; else StartDateList">
+              <input
+                type="text"
+                class="form-control"
+                id="StartDate"
+                required
+                [(ngModel)]="item.StartDate"
+                name="StartDate"
+                #StartDate="ngModel"
+              />
+              <app-message-err [element]="StartDate"></app-message-err>
+            </ng-container>
+            <ng-template #StartDateList> {{ item.StartDate }}</ng-template>
+          </td>
+          <td>
+            <!--EndDate-->
+            <ng-container *ngIf="item.actionType; else EndDateList">
+              <input
+                type="text"
+                class="form-control"
+                id="EndDate"
+                [(ngModel)]="item.EndDate"
+                name="EndDate"
+                #EndDate="ngModel"
+              />
+              <app-message-err [element]="EndDate"></app-message-err>
+            </ng-container>
+            <ng-template #EndDateList> {{ item.EndDate }}</ng-template>
+          </td>
+          <td>
+            <!--MedicineName-->
+            <ng-container *ngIf="item.actionType; else MedicineNameList">
+              <input
+                type="text"
+                class="form-control"
+                id="MedicineName"
+                [(ngModel)]="item.MedicineName"
+                name="MedicineName"
+                #MedicineName="ngModel"
+              />
+              <app-message-err [element]="MedicineName"></app-message-err>
+            </ng-container>
+            <ng-template #MedicineNameList> {{ item.MedicineName }}</ng-template>
+          </td>
+          <td>
+            <!--Dosage1-->
+            <ng-container *ngIf="item.actionType; else Dosage1List">
+              <input
+                type="text"
+                class="form-control"
+                id="Dosage1"
+                [(ngModel)]="item.Dosage1"
+                name="Dosage1"
+                #Dosage1="ngModel"
+              />
+              <app-message-err [element]="Dosage1"></app-message-err>
+            </ng-container>
+            <ng-template #Dosage1List> {{ item.Dosage1 }}</ng-template>
+          </td>
+          <td>
+            <!--Dosage2-->
+            <ng-container *ngIf="item.actionType; else Dosage2List">
+              <input
+                type="text"
+                class="form-control"
+                id="Dosage2"
+                [(ngModel)]="item.Dosage2"
+                name="Dosage2"
+                #Dosage2="ngModel"
+              />
+              <app-message-err [element]="Dosage2"></app-message-err>
+            </ng-container>
+            <ng-template #Dosage2List> {{ item.Dosage2 }}</ng-template>
+          </td>
+          <td>
+            <!--Type-->
+            <ng-container *ngIf="item.actionType; else TypeList">
+              <input type="text" class="form-control" id="Type" [(ngModel)]="item.Type" name="Type" #Type="ngModel" />
+              <app-message-err [element]="Type"></app-message-err>
+            </ng-container>
+            <ng-template #TypeList> {{ item.Type }}</ng-template>
+          </td>
+          <td>
+            <!--Instrutions-->
+            <ng-container *ngIf="item.actionType; else InstructionsList">
+              <input
+                type="text"
+                class="form-control"
+                id="Instructions"
+                [(ngModel)]="item.Instructions"
+                name="Instructions"
+                #Instructions="ngModel"
+              />
+              <app-message-err [element]="Instructions"></app-message-err>
+            </ng-container>
+            <ng-template #InstructionsList> {{ item.Instructions }}</ng-template>
+          </td>
+          <td>
+            <!--Mill-->
+            <ng-container *ngIf="item.actionType; else MillList">
+              <input type="text" class="form-control" id="Mill" [(ngModel)]="item.Mill" name="Mill" #Mill="ngModel" />
+              <app-message-err [element]="Mill"></app-message-err>
+            </ng-container>
+            <ng-template #MillList> {{ item.Mill }}</ng-template>
+          </td>
+          <td>
+            <!--code1-->
+            <ng-container *ngIf="item.actionType; else code1List">
+              <input type="text" class="form-control" id="code1" [(ngModel)]="item.code1" name="code1" #code1="ngModel" />
+              <app-message-err [element]="code1"></app-message-err>
+            </ng-container>
+            <ng-template #code1List> {{ item.code1 }}</ng-template>
+          </td>
+          <td>
+            <!--code2-->
+            <ng-container *ngIf="item.actionType; else code2List">
+              <input type="text" class="form-control" id="code2" [(ngModel)]="item.code2" name="code2" #code2="ngModel" />
+              <app-message-err [element]="code2"></app-message-err>
+            </ng-container>
+            <ng-template #code2List> {{ item.code2 }}</ng-template>
+          </td>
+          <td>
+            <!--Time1-->
+            <ng-container *ngIf="item.actionType; else Time1List">
+              <input type="text" class="form-control" id="Time1" [(ngModel)]="item.Time1" name="Time1" #Time1="ngModel" />
+              <app-message-err [element]="Time1"></app-message-err>
+            </ng-container>
+            <ng-template #Time1List> {{ item.Time1 }}</ng-template>
+          </td>
+          <td>
+            <!--Time2-->
+            <ng-container *ngIf="item.actionType; else Time2List">
+              <input type="text" class="form-control" id="Time2" [(ngModel)]="item.Time2" name="Time2" #Time2="ngModel" />
+              <app-message-err [element]="Time2"></app-message-err>
+            </ng-container>
+            <ng-template #Time2List> {{ item.Time2 }}</ng-template>
+          </td>
+          <td>
+            <!--Time3-->
+            <ng-container *ngIf="item.actionType; else Time3List">
+              <input type="text" class="form-control" id="Time3" [(ngModel)]="item.Time3" name="Time3" #Time3="ngModel" />
+              <app-message-err [element]="Time3"></app-message-err>
+            </ng-container>
+            <ng-template #Time3List> {{ item.Time3 }}</ng-template>
+          </td>
+          <td>
+            <!--Time4-->
+            <ng-container *ngIf="item.actionType; else Time4List">
+              <input type="text" class="form-control" id="Time4" [(ngModel)]="item.Time4" name="Time4" #Time4="ngModel" />
+              <app-message-err [element]="Time4"></app-message-err>
+            </ng-container>
+            <ng-template #Time4List> {{ item.Time4 }}</ng-template>
+          </td>
+          <td>
+            <!--Status-->
+            <ng-container *ngIf="item.actionType; else StatusList">
+              <input
+                type="text"
+                class="form-control"
+                id="Status"
+                required
+                [(ngModel)]="item.Status"
+                name="Status"
+                #Status="ngModel"
+              />
+              <app-message-err [element]="Status"></app-message-err>
+            </ng-container>
+            <ng-template #StatusList> {{ item.Status }}</ng-template>
+          </td>
+          <td>
+            <button type="button" ngClass="btn-sucess" (click)="onAddRecMedi(key,item.actionType)">送出</button>
+            <button type="button" [ngClass]="item.actionType ? 'btn-cancel' : 'btn-edit' " (click)="onEditRecMedi(key)">{{ item.actionType ? "取消" : "編輯" }}</button>
+          </td>
+        </tr>
+      </tbody>
     </table>
+    <div class="page">
+      <app-pagination [val]="this.ValChange" (valChange)="onValChange($event)" (update)="onUpdate($event)"></app-pagination>
+    </div>
+  </form>
 </div>

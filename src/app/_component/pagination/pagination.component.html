@@ -1,0 +1,68 @@
+<div class="pagerBlock" id="pagerBlock">
+  <div></div>
+  <div class="pageBtnBox">
+    <ng-container *ngIf="page > 1">
+      <!-- 第一頁 開始 -->
+      <button
+        class="btn s main"
+        *ngIf="page > btn"
+        (click)="move('first')"
+        [class.disabled]="now <= 1"
+        >
+        <!-- [disabled]="(load.loading$$ | async) || false" -->
+        <!-- <mat-icon class="matIcon" svgIcon="chevron-double-left"></mat-icon> -->
+      </button>
+      <!-- 第一頁 結束 -->
+
+      <!-- 前一頁 開始 -->
+      <button
+        class="btn s main"
+        *ngIf="page > btn"
+        (click)="move('prev')"
+        [class.disabled]="now <= 1"
+        >
+        <!-- [disabled]="(load.loading$$ | async) || false" -->
+        <!-- <mat-icon class="matIcon" svgIcon="chevron-left"></mat-icon> -->
+      </button>
+      <!-- 前一頁 結束 -->
+
+      <!-- 電腦版顯示數字按鈕 開始 -->
+      <button
+        *ngFor="let item of num"
+        class="btn full"
+        (click)="move(item)"
+        [class.now]="item === now"
+        [textContent]="item"
+        ></button>
+        <!-- [disabled]="(load.loading$$ | async) || false" -->
+      <!-- 電腦版顯示數字按鈕 結束 -->
+
+      <!-- 下一頁 開始 -->
+      <button
+        class="btn s main"
+        *ngIf="page > btn"
+        (click)="move('next')"
+        [class.disabled]="now >= page"
+        >
+        <!-- [disabled]="(load.loading$$ | async) || false" -->
+        <!-- <mat-icon class="matIcon" svgIcon="chevron-right"></mat-icon> -->
+      </button>
+      <!-- 下一頁 結束 -->
+
+      <!-- 最後頁 開始 -->
+      <button
+        class="btn s main"
+        *ngIf="page > btn"
+        (click)="move('last')"
+        [class.disabled]="now >= page"
+        >
+        <!-- [disabled]="(load.loading$$ | async) || false" -->
+        <!-- <mat-icon class="matIcon" svgIcon="chevron-double-right"></mat-icon> -->
+      </button>
+      <!-- 最後頁 結束 -->
+    </ng-container>
+  </div>
+  <div class="pageRslBox">
+    <span>{{ show }}筆 / 共{{ max }}筆</span>
+  </div>
+</div>

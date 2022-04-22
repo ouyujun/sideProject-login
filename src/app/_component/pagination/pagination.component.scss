@@ -1,0 +1,141 @@
+:root {
+  --color0: transparent;
+  --white: #fff;
+  --black: #333538;
+  --red: #c94d4d;
+  --orange: #ef8d39;
+  --yellow: #f4bc00;
+  --green: #61c778;
+  --green2: #38b4a6;
+  --blue: #43a1f2;
+  --blue2: #4387f6;
+  --purple: #a36add;
+  --gray: #7a98af;
+  --gray2: #a5afba;
+  --main: #43a1f2;
+  --hover: var(--main);
+  --border: #dbdfe3;
+  --font: var(--black);
+  --bG: #f9fbfc;
+  --line: #edf0f4;
+  --placeholder: #9eabbe;
+  --label: #626971;
+  --iptBg: #daf7ff;
+  --iptFocus: #a2e5ff;
+  --iptShadow: #8ce5ff;
+  --iptFocusTxt: #60c6ed;
+  --iptBgRquire: #ffeded;
+  --iptBgRquireFocus: #ffb3b3;
+  --iptBgRquireShadow: #ff8c8c;
+  --iptBgDisable: #e8eef5;
+  --btnIcon: #a5afba;
+  --iconBtnHover: #f2f3f5;
+  --genderMale: #c7e9ff;
+  --genderFemale: #ffc7c7;
+  --genderUnknow: #d4d4d4;
+  --residents: #e8f4ff;
+  --residentsBtn: #66a5dd;
+  --navResidentsLine: #cee1f2;
+  --rangeBG: #bdc9d6;
+  --pageTitleLine: #dbe5ef;
+  --thBG: #9ccbf4;
+  --th: #406a8e;
+  --tableLine: #dcdfe3;
+  --tableHover: #f2f9ff;
+  --indeterminate: #87c7ff;
+  --stapm: #cc0000;
+  --blockBG: #fff5e2;
+  --genericBg2: rgba(0, 0, 0, 0.07);
+  --lBlue: #acd5f9;
+  --lRed: #e3a3a3;
+  --lPurple: #dbc5f2;
+  --navW: 230px;
+  --fontFamily: $fontFamily;
+}
+
+.pagerBlock {
+  flex-flow: row nowrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  padding: 8px 10px;
+  border-top: 1px solid var(--tableLine);
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  background-color: var(--white);
+  border-radius: 0 0 5px 5px;
+}
+.pagerBlock .pageBtnBox {
+  flex-flow: row nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.pagerBlock .pageBtnBox .btn {
+  margin: 0 auto;
+  line-height: 1;
+  width: 32px;
+}
+.pagerBlock .pageBtnBox .btn.now {
+  color: var(--white);
+}
+.pagerBlock
+  .pageBtnBox
+  .btn:not(.pagerBlock .pageBtnBox .btn.now):not(.pagerBlock .pageBtnBox .btn:hover):not(.pagerBlock
+    .pageBtnBox
+    .btn[disabled]):not(.pagerBlock .pageBtnBox .btn.disabled) {
+  background-color: var(--white);
+  color: var(--label);
+}
+.pagerBlock
+  .pageBtnBox
+  .btn:not(.pagerBlock .pageBtnBox .btn.now):not(.pagerBlock .pageBtnBox .btn:hover):not(.pagerBlock
+    .pageBtnBox
+    .btn[disabled]):not(.pagerBlock .pageBtnBox .btn.disabled)
+  * {
+  color: var(--label);
+}
+.pagerBlock .pageBtnBox .btn:hover {
+  background-color: var(--main);
+}
+.pagerBlock .pageBtnBox .btn:hover * {
+  color: var(--label);
+}
+.pagerBlock .pageBtnBox .btn .mat-icon {
+  margin: 0 auto;
+  width: 1rem;
+  height: 1rem;
+}
+.pagerBlock
+  .pageBtnBox
+  .btn[disabled]:not(.pagerBlock .pageBtnBox .btn[disabled].icon, .pagerBlock
+    .pageBtnBox
+    .btn.disabled.icon),
+.pagerBlock
+  .pageBtnBox
+  .btn.disabled:not(.pagerBlock .pageBtnBox .btn[disabled].icon, .pagerBlock
+    .pageBtnBox
+    .btn.disabled.icon) {
+  background-color: var(--white) !important;
+  color: var(--btnIcon);
+}
+.pagerBlock
+  .pageBtnBox
+  .btn[disabled]:not(.pagerBlock .pageBtnBox .btn[disabled].icon, .pagerBlock
+    .pageBtnBox
+    .btn.disabled.icon)
+  *,
+.pagerBlock
+  .pageBtnBox
+  .btn.disabled:not(.pagerBlock .pageBtnBox .btn[disabled].icon, .pagerBlock
+    .pageBtnBox
+    .btn.disabled.icon)
+  * {
+  color: var(--btnIcon);
+}
+.pagerBlock .pageRslBox span {
+  color: var(--label);
+}

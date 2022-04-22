@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: '', //<--注意自己建立會寫錯成：'/'而導致顯示不出來，正確的是：''．
     component: IndexComponent,
-    canActivate: [AuthGuard], 
+    canActivate: [AuthGuard],
     children: [
       { path: 'page1', component: PageAComponent },
       { path: 'page2', component: PageBComponent }
@@ -25,6 +25,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { enableTracing: false })], // <-- debugging purposes only (路由紀錄)
   exports: [RouterModule]
 })
-export class AppRoutingModule { 
+export class AppRoutingModule {
 
 }

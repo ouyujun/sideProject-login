@@ -1,6 +1,6 @@
 <body [ngClass]="use?'light':'dark'">
   <div class="bg">
     <router-outlet></router-outlet>
-    <button class="btn" (click)="getTheme()">{{use?'light':'dark'}}</button>
+    <button class="btn btn-default" (click)="getTheme()">{{use?'light':'dark'}}</button>
   </div>
 </body>

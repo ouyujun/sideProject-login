@@ -8,43 +8,96 @@ $err     : --err;
 $abc     : --abc;
 
 $light-theme-config:(light:($bg : #fff,
-        $font : #333,
-        $header : rgb(98, 141, 242),
-        $wrapper : #ededed,
-        $footer : #bbb,
-        $page : #fff,
-        $err : darkred,
-        $abc:green), );
+    $font : #333,
+    $header : rgb(98, 141, 242),
+    $wrapper : #ededed,
+    $footer : #bbb,
+    $page : #fff,
+    $err : darkred,
+    $abc:green), );
 $dark-theme-config:(dark:($bg : #333,
-        $font : #fff,
-        $header : rgb(78, 110, 184),
-        $wrapper : #888,
-        $footer : #333,
-        $page : #bbb,
-        $err : rgb(222, 99, 99),
-    ), );
+    $font : #fff,
+    $header : rgb(78, 110, 184),
+    $wrapper : #888,
+    $footer : #333,
+    $page : #bbb,
+    $err : rgb(222, 99, 99),
+  ), );
 
 
 
 //存成另一個變數  動態變數
 :root {
-    $light: map-merge($light-theme-config, $dark-theme-config);
-    
-    @each $theme,
-    $colorMap in $light {
-        .#{$theme} {
-            @each $colorKey,
-            $colorValue in $colorMap {
-                #{$colorKey}: $colorValue;
-            }
-        }
+  $light: map-merge($light-theme-config, $dark-theme-config);
+
+  @each $theme,
+  $colorMap in $light {
+    .#{$theme} {
+
+      @each $colorKey,
+      $colorValue in $colorMap {
+        #{$colorKey}: $colorValue;
+      }
     }
+  }
+
+  @function sqrt($color) {
+
+    @each $light-key,
+    $light-color in $light-theme-config {
+      @if not map-has-key($dark-theme-config, $light-key) {
+        @warn "沒有 `#{$light-key}`"
+      }
+    }
+  }
 }
 
-// 核對筆數
+
+button {
+  margin       : 2px;
+  padding      : 8px;
+  border-radius: 8px;
+  border       : none;
+}
+
+.btn-default {
+  background-color: var(--header);
+  color           : sqrt(--bg);
+
+  &:hover {
+    background-color: var(--wrapper);
+    cursor          : pointer;
+  }
+}
+
+.btn-cancel {
+  background-color: #888;
+  color           : #fff;
+  &:hover {
+    background-color: #bbb;
+    cursor          : pointer;
+  }
+}
+
+.btn-edit {
+  background-color: rgb(255, 207, 85);
+  color           : #333;
+  &:hover {
+    background-color: rgb(255, 216, 116);
+    cursor          : pointer;
+  }
+}
+.btn-sucess {
+  background-color: rgb(113, 172, 81);
+  color           : #333;
+  &:hover {
+    background-color: rgb(161, 233, 122);
+    cursor          : pointer;
+  }
+}
 
 p {
-    color: --abc;
-    //function抓--abc比對有沒有
-    //1.
+  color: sqrt(--abc);
+  //function抓--abc比對有沒有
+  //1.
 }

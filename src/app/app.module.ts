@@ -16,6 +16,8 @@ import { FooderComponent } from './_component/fooder/fooder.component';
 import { MessageErrComponent } from './_component/message-err/message-err.component';
 import { newMailRules } from './_shared/directive/email.directive';
 
+import { PaginationComponent } from './_component/pagination/pagination.component';
+
 
 
 @NgModule({
@@ -29,7 +31,7 @@ import { newMailRules } from './_shared/directive/email.directive';
     SidebarLeftComponent,
     FooderComponent,
     MessageErrComponent,
-    newMailRules
+    newMailRules,PaginationComponent
   ],
   imports: [
     BrowserModule,
