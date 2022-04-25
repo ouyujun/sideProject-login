@@ -24,7 +24,7 @@ export class PageAComponent implements OnInit {
   */
   recMediResult: recMediDataResult[] = [];
   ValChange: PagerData = {
-    DataCount: 99,
+    DataCount: 10,
     PageIndex: 1,
     DataResult: []
   };
@@ -32,7 +32,6 @@ export class PageAComponent implements OnInit {
   Update: number = 0;
   inputParameter = new inputParameter();
   cloum = new listCloun(); //欄位名稱
-  isEditIndex: number = 0;
 
   constructor(private CatchApiService: CatchApiService, private RecMediListService: RecMediListService) {
     this.RecMediListService.recMedi.subscribe(res => { this.recMediResult = res });
@@ -51,20 +50,18 @@ export class PageAComponent implements OnInit {
           PageIndex: 1,
           DataResult: res.Data.DataResult
         };
-
         this.RecMediListService.recMedi.next(res.Data.DataResult);
-        console.log(res, 46)
       })
   }
 
 
   //1.打開input新增
   showAddRecMedi() {
-    const RecMediList: recMediDataResult[] = this.recMediResult;
+    const RecMediList: recMediDataResult[] = JSON.parse(JSON.stringify(this.recMediResult));
     RecMediList.unshift(new recMediDataResult());//再去新增一
+    RecMediList[0].actionType = '新增';//第二列將新增的欄位填為true
     this.RecMediListService.recMedi.next(RecMediList);
     //input
-    this.recMediResult[0].actionType = '新增';//第二列將新增的欄位填為true
     console.log(this.recMediResult);
   }
 
@@ -74,28 +71,27 @@ export class PageAComponent implements OnInit {
     if (!this.myform.valid) {
       this.myform.form.markAllAsTouched();
       return
-    } else {
-      if (actionType === '新增') {
-        this.CatchApiService.myRecMediPost(this.recMediResult[index], 'HealthCare/AddRecMedi').subscribe(res => {
-          this.recMediResult.splice(index, 1)
-        });
-        return
-      } else if (actionType === '編輯') {
-        this.CatchApiService.myRecMediPost(this.recMediResult[index], 'HealthCare/UpdateRecMedi').subscribe(res => {
-
-        });
+    }
+    if (actionType === '新增') {
+      this.CatchApiService.myRecMediPost(this.recMediResult[index], 'HealthCare/AddRecMedi').subscribe(res => {
+        this.recMediResult.splice(index, 1)
+      });
+      return
+    }
+    if (actionType === '編輯') {
+      this.CatchApiService.myRecMediPost(this.recMediResult[index], 'HealthCare/UpdateRecMedi').subscribe(res => {
         this.recMediResult[index].actionType = '';
-      }
+      });
+      return
     }
   }
   //3.編輯/取消
   //如果按編輯將index存起來並且在按新增時關閉input
   onEditRecMedi(index: number) {
     //先判斷欄位是否有值
-    if (!this.recMediResult[index].OrgAccount) { //沒有就刪除
+    if (this.recMediResult[index].actionType === '新增') { //沒有就刪除
       this.recMediResult.splice(index, 1);
-      return
-    }else if(this.recMediResult[index].actionType==='編輯'){ //有就判斷是否為需編輯或取消編輯
+    } else if (this.recMediResult[index].actionType === '編輯') { //有就判斷是否為需編輯或取消編輯
       this.recMediResult[index].actionType = '';
     } else { //有就判斷是否為需編輯或取消編輯
       this.recMediResult[index].actionType = '編輯';
@@ -105,8 +101,8 @@ export class PageAComponent implements OnInit {
   //頁碼資料-目前沒作用
   onValChange(val: PagerData) {
     console.log(val)
-    this.inputParameter.PageIndex = this.ValChange!.PageIndex;
-    this.inputParameter.PageCount = this.ValChange!.DataCount;
+    this.inputParameter.PageIndex = val.PageIndex;
+    this.inputParameter.PageCount = val.DataCount;
     this.CatchApiService.myRecMediPost(this.inputParameter, 'HealthCare/GetRecMediList')
       .subscribe((res: apiFeedback) => {
         this.recMediResult = res.Data?.DataResult;
