@@ -14,7 +14,9 @@ $light-theme-config:(light:($bg : #fff,
     $footer : #bbb,
     $page : #fff,
     $err : darkred,
-    $abc:green), );
+    $abc:green
+    ), );
+
 $dark-theme-config:(dark:($bg : #333,
     $font : #fff,
     $header : rgb(78, 110, 184),
@@ -22,6 +24,7 @@ $dark-theme-config:(dark:($bg : #333,
     $footer : #333,
     $page : #bbb,
     $err : rgb(222, 99, 99),
+
   ), );
 
 
@@ -29,27 +32,22 @@ $dark-theme-config:(dark:($bg : #333,
 //存成另一個變數  動態變數
 :root {
   $light: map-merge($light-theme-config, $dark-theme-config);
-
   @each $theme,
   $colorMap in $light {
     .#{$theme} {
-
       @each $colorKey,
       $colorValue in $colorMap {
         #{$colorKey}: $colorValue;
       }
     }
   }
+}
 
-  @function sqrt($color) {
-
-    @each $light-key,
-    $light-color in $light-theme-config {
-      @if not map-has-key($dark-theme-config, $light-key) {
-        @warn "沒有 `#{$light-key}`"
-      }
+@function lightVar($color) {
+    @if not map-has-key($light-theme-config,$color) {
+      @warn "沒有 `#{$color}`";
     }
-  }
+    @return map-get($light-theme-config,$color);
 }
 
 
@@ -73,6 +71,7 @@ button {
 .btn-cancel {
   background-color: #888;
   color           : #fff;
+
   &:hover {
     background-color: #bbb;
     cursor          : pointer;
@@ -82,14 +81,17 @@ button {
 .btn-edit {
   background-color: rgb(255, 207, 85);
   color           : #333;
+
   &:hover {
     background-color: rgb(255, 216, 116);
     cursor          : pointer;
   }
 }
+
 .btn-sucess {
   background-color: rgb(113, 172, 81);
   color           : #333;
+
   &:hover {
     background-color: rgb(161, 233, 122);
     cursor          : pointer;
@@ -97,7 +99,7 @@ button {
 }
 
 p {
-  color: sqrt(--abc);
+  color: lightVar(abc);
   //function抓--abc比對有沒有
   //1.
 }
