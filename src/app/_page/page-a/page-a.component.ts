@@ -95,9 +95,10 @@ export class PageAComponent implements OnInit {
     if (!this.recMediResult[index].OrgAccount) { //沒有就刪除
       this.recMediResult.splice(index, 1);
       return
+    }else if(this.recMediResult[index].actionType==='編輯'){ //有就判斷是否為需編輯或取消編輯
+      this.recMediResult[index].actionType = '';
     } else { //有就判斷是否為需編輯或取消編輯
-      this.isEditIndex = index;
-      this.recMediResult[this.isEditIndex].actionType = '編輯';
+      this.recMediResult[index].actionType = '編輯';
     }
   }
 
