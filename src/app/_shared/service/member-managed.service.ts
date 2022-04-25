@@ -12,16 +12,14 @@ export class MemberManagedService {
   isUser = new BehaviorSubject<userState>(new userState());
   constructor(private mainservice: CatchApiService, private router: Router) { }
 
-  /**
-  *  登入使用者，並通知所有訂閱者
-  */
+  //登入使用者，並通知所有訂閱者
   login(group: MembersList): void {
     this.mainservice.getMember().subscribe((res) => {
       //通知所有使用者
       if (group) {
         const rule = res.findIndex((item: MembersList) => item.email === group.email && item.password === group.password) !== -1;
         if (rule) {
-          this.isUser.next({ userMail: group.email, userState: false })
+          this.isUser.next(new userState(group.email,false))
           this.router.navigate(['./page1']);
           return
         } else {

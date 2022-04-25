@@ -3,17 +3,14 @@
  * @param recMediListCloun
  */
 export class listCloun {
-  public recMediField: string[];
-  [key: string]: string[] | number | undefined;
-  constructor() {
-    this.recMediField = [
-      'OrgAccount', 'No', 'StartDate',
-      'EndDate', 'MedicineName', 'Dosage1',
-      'Dosage2', 'Type', 'Instructions',
-      'Mill', 'code1', 'code2', 'Time1',
-      'Time2', 'Time3', 'Time4', 'Status','動作'
-    ]
-  }
+  [key: string]: string[] | number | undefined
+  constructor(public recMediField: string[] = [
+    'OrgAccount', 'No', 'StartDate',
+    'EndDate', 'MedicineName', 'Dosage1',
+    'Dosage2', 'Type', 'Instructions',
+    'Mill', 'code1', 'code2', 'Time1',
+    'Time2', 'Time3', 'Time4', 'Status', '動作'
+  ]) { }
 }
 
 /**
@@ -21,21 +18,15 @@ export class listCloun {
  * @param inputParameter
  */
 export class inputParameter {
-  public Token: string;
-  public OrgAccount: string | null;
-  public LoginAccount: string | null;
-  public Data: any | null;
-  public PageIndex: number|null;
-  public PageCount: number|null;
-  constructor() {
+  constructor(
+    public Token: string = '2zgDRxcfsSegz16ITtH9cc0iJxxNEHxBJlajY5hIakY=',
+    public OrgAccount: string | null = 'S101',
+    public LoginAccount: string | null = 'U01',
+    public Data: any | null = { 'NoList': [{ 'Values': '107025' }] },
+    public PageIndex: number | null = 1,
+    public PageCount: number | null = 10,
     //再利用constructor特性去賦予值(沒有賦予值的話是無法new成一個物件，會報錯～)
-    this.Token = '2zgDRxcfsSegz16ITtH9cc0iJxxNEHxBJlajY5hIakY=';
-    this.OrgAccount = 'S101';
-    this.LoginAccount = 'U01';
-    this.Data = { 'NoList': [{ 'Values': '107025' }] };
-    this.PageIndex = 1;
-    this.PageCount = 10;
-  }
+  ) { }
 }
 
 //取得列表...
@@ -44,64 +35,52 @@ export class inputParameter {
  * @param apiFeedback
  */
 export class apiFeedback {
-  public code: number | null;
-  public Data: any;
-  public Msg: string | null;
-  public success: boolean | null;
-  //與interface一樣先定義類型
-  constructor() {
+  constructor(
+    public code: number | null = null,
+    public Data: any = null,
+    public Msg: string | null = null,
+    public success: boolean | null = null,
+    //與interface一樣先定義類型
     //再利用constructor特性去賦予值(沒有賦予值的話是無法new成一個物件，會報錯～)
-    this.code = null;
-    this.Data = null;
-    this.Msg = null;
-    this.success = null;
-  }
+  ) { }
+}
+//取得列表...
+/**
+ * 取得列表後Data裏
+ * @param recMediData總比數資料列
+ */
+export class recMediData {
+  constructor(
+    public DataCount: number | null = null,
+    public DataResult: recMediDataResult[] = []
+    ) { }
 }
 /**
  * 定義取得列表內容（DataResult）
  * @param recMediDataResult
  */
 export class recMediDataResult {
-  public code1: number | string | null;
-  public code2: number | string | null;
-  public Dosage1: number | string | null;
-  public Dosage2: number | string | null;
-  public EndDate: string | null;
-  public Instructions: string | null;
-  public MedicineName: string | null;
-  public Mill: number | string | null;
-  public No: string | null;
-  public OrgAccount: string | null;
-  public Seq: string | null;
-  public StartDate: string | null;
-  public Status: number | string | null;
-  public Time1: string | null;
-  public Time2: string | null;
-  public Time3: string | null;
-  public Time4: string | null;
-  public Type: string | null;
-  public actionType: string | null;
-  //與interface一樣先定義類型
-  constructor() {
-    //再利用constructor特性去賦予值(沒有賦予值的話是無法new成一個物件，會報錯～)
-    this.code1 = null;
-    this.code2 = null;
-    this.Dosage1 = null;
-    this.Dosage2 = null;
-    this.EndDate = null;
-    this.Instructions = null;
-    this.MedicineName = null;
-    this.Mill = null;
-    this.No = null;
-    this.OrgAccount = null;
-    this.Seq = null;
-    this.StartDate = null;
-    this.Status = null;
-    this.Time1 = null;
-    this.Time2 = null;
-    this.Time3 = null;
-    this.Time4 = null;
-    this.Type = null;
-    this.actionType = null;
-  }
+  constructor(
+    public code1: number | string | null = null,
+    public code2: number | string | null = null,
+    public Dosage1: number | string | null = null,
+    public Dosage2: number | string | null = null,
+    public EndDate: string | null = null,
+    public Instructions: string | null = null,
+    public MedicineName: string | null = null,
+    public Mill: number | string | null = null,
+    public No: string | null = null,
+    public OrgAccount: string | null = null,
+    public Seq: string | null = null,
+    public StartDate: string | null = null,
+    public Status: number | string | null = null,
+    public Time1: string | null = null,
+    public Time2: string | null = null,
+    public Time3: string | null = null,
+    public Time4: string | null = null,
+    public Type: string | null = null,
+    public actionType: string | null = null,
+    //與interface一樣先定義類型
+    //利用constructor特性去賦予值(沒有賦予值的話是無法new成一個物件，會報錯～)
+  ) { }
 }

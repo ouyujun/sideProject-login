@@ -6,7 +6,6 @@ export const environment = {
   production: false,
   apiUrl: "http://222.191.229.163:7003/",
   configUrl: '../../assets/member.json',
-  config2Url: '../../assets/memberinfo.json',
   objToken: '2zgDRxcfsSegz16ITtH9cc0iJxxNEHxBJlajY5hIakY'
 };
 

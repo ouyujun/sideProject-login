@@ -18,7 +18,7 @@
                 id="OrgAccount"
                 required
                 [(ngModel)]="getItem.OrgAccount"
-                name="{{'OrgAccount'+key}}"
+                name="{{ 'OrgAccount' + key }}"
                 #OrgAccount="ngModel"
               />
               <app-message-err [element]="OrgAccount"></app-message-err>
@@ -42,7 +42,7 @@
                 id="StartDate"
                 required
                 [(ngModel)]="getItem.StartDate"
-                name="{{'StartDate'+key}}"
+                name="{{ 'StartDate' + key }}"
                 #StartDate="ngModel"
               />
               <app-message-err [element]="StartDate"></app-message-err>
@@ -57,7 +57,7 @@
                 class="form-control"
                 id="EndDate"
                 [(ngModel)]="getItem.EndDate"
-                name="{{'EndDate'+key}}"
+                name="{{ 'EndDate' + key }}"
                 #EndDate="ngModel"
               />
               <app-message-err [element]="EndDate"></app-message-err>
@@ -72,7 +72,7 @@
                 class="form-control"
                 id="MedicineName"
                 [(ngModel)]="getItem.MedicineName"
-                name="{{'MedicineName'+key}}"
+                name="{{ 'MedicineName' + key }}"
                 #MedicineName="ngModel"
               />
               <app-message-err [element]="MedicineName"></app-message-err>
@@ -87,7 +87,7 @@
                 class="form-control"
                 id="Dosage1"
                 [(ngModel)]="getItem.Dosage1"
-                name="{{'Dosage1'+key}}"
+                name="{{ 'Dosage1' + key }}"
                 #Dosage1="ngModel"
               />
               <app-message-err [element]="Dosage1"></app-message-err>
@@ -102,7 +102,7 @@
                 class="form-control"
                 id="Dosage2"
                 [(ngModel)]="getItem.Dosage2"
-                name="{{'Dosage2'+key}}"
+                name="{{ 'Dosage2' + key }}"
                 #Dosage2="ngModel"
               />
               <app-message-err [element]="Dosage2"></app-message-err>
@@ -125,7 +125,7 @@
                 class="form-control"
                 id="Instructions"
                 [(ngModel)]="getItem.Instructions"
-                name="{{'Instructions'+key}}"
+                name="{{ 'Instructions' + key }}"
                 #Instructions="ngModel"
               />
               <app-message-err [element]="Instructions"></app-message-err>
@@ -135,7 +135,14 @@
           <td>
             <!--Mill-->
             <ng-container *ngIf="getItem.actionType; else MillList">
-              <input type="text" class="form-control" id="Mill" [(ngModel)]="getItem.Mill" name="{{'Mill'+key}}" #Mill="ngModel" />
+              <input
+                type="text"
+                class="form-control"
+                id="Mill"
+                [(ngModel)]="getItem.Mill"
+                name="{{ 'Mill' + key }}"
+                #Mill="ngModel"
+              />
               <app-message-err [element]="Mill"></app-message-err>
             </ng-container>
             <ng-template #MillList> {{ getItem.Mill }}</ng-template>
@@ -143,7 +150,14 @@
           <td>
             <!--code1-->
             <ng-container *ngIf="getItem.actionType; else code1List">
-              <input type="text" class="form-control" id="code1" [(ngModel)]="getItem.code1" name="{{'code1'+key}}" #code1="ngModel" />
+              <input
+                type="text"
+                class="form-control"
+                id="code1"
+                [(ngModel)]="getItem.code1"
+                name="{{ 'code1' + key }}"
+                #code1="ngModel"
+              />
               <app-message-err [element]="code1"></app-message-err>
             </ng-container>
             <ng-template #code1List> {{ getItem.code1 }}</ng-template>
@@ -151,7 +165,14 @@
           <td>
             <!--code2-->
             <ng-container *ngIf="getItem.actionType; else code2List">
-              <input type="text" class="form-control" id="code2" [(ngModel)]="getItem.code2" name="{{'code2'+key}}" #code2="ngModel" />
+              <input
+                type="text"
+                class="form-control"
+                id="code2"
+                [(ngModel)]="getItem.code2"
+                name="{{ 'code2' + key }}"
+                #code2="ngModel"
+              />
               <app-message-err [element]="code2"></app-message-err>
             </ng-container>
             <ng-template #code2List> {{ getItem.code2 }}</ng-template>
@@ -159,7 +180,14 @@
           <td>
             <!--Time1-->
             <ng-container *ngIf="getItem.actionType; else Time1List">
-              <input type="text" class="form-control" id="Time1" [(ngModel)]="getItem.Time1" name="{{'Time1'+key}}" #Time1="ngModel" />
+              <input
+                type="text"
+                class="form-control"
+                id="Time1"
+                [(ngModel)]="getItem.Time1"
+                name="{{ 'Time1' + key }}"
+                #Time1="ngModel"
+              />
               <app-message-err [element]="Time1"></app-message-err>
             </ng-container>
             <ng-template #Time1List> {{ getItem.Time1 }}</ng-template>
@@ -167,7 +195,14 @@
           <td>
             <!--Time2-->
             <ng-container *ngIf="getItem.actionType; else Time2List">
-              <input type="text" class="form-control" id="Time2" [(ngModel)]="getItem.Time2" name="{{'Time2'+key}}" #Time2="ngModel" />
+              <input
+                type="text"
+                class="form-control"
+                id="Time2"
+                [(ngModel)]="getItem.Time2"
+                name="{{ 'Time2' + key }}"
+                #Time2="ngModel"
+              />
               <app-message-err [element]="Time2"></app-message-err>
             </ng-container>
             <ng-template #Time2List> {{ getItem.Time2 }}</ng-template>
@@ -175,7 +210,14 @@
           <td>
             <!--Time3-->
             <ng-container *ngIf="getItem.actionType; else Time3List">
-              <input type="text" class="form-control" id="Time3" [(ngModel)]="getItem.Time3" name="{{'Time3'+key}}" #Time3="ngModel" />
+              <input
+                type="text"
+                class="form-control"
+                id="Time3"
+                [(ngModel)]="getItem.Time3"
+                name="{{ 'Time3' + key }}"
+                #Time3="ngModel"
+              />
               <app-message-err [element]="Time3"></app-message-err>
             </ng-container>
             <ng-template #Time3List> {{ getItem.Time3 }}</ng-template>
@@ -183,7 +225,14 @@
           <td>
             <!--Time4-->
             <ng-container *ngIf="getItem.actionType; else Time4List">
-              <input type="text" class="form-control" id="Time4" [(ngModel)]="getItem.Time4" name="{{'Time4'+key}}" #Time4="ngModel" />
+              <input
+                type="text"
+                class="form-control"
+                id="Time4"
+                [(ngModel)]="getItem.Time4"
+                name="{{ 'Time4' + key }}"
+                #Time4="ngModel"
+              />
               <app-message-err [element]="Time4"></app-message-err>
             </ng-container>
             <ng-template #Time4List> {{ getItem.Time4 }}</ng-template>
@@ -197,7 +246,7 @@
                 id="Status"
                 required
                 [(ngModel)]="getItem.Status"
-                name="{{'Status'+key}}"
+                name="{{ 'Status' + key }}"
                 #Status="ngModel"
               />
               <app-message-err [element]="Status"></app-message-err>
@@ -205,14 +254,21 @@
             <ng-template #StatusList> {{ getItem.Status }}</ng-template>
           </td>
           <td>
-            <button type="button" *ngIf="getItem.actionType" ngClass="btn-sucess" (click)="onAddRecMedi(key,getItem.actionType)">送出</button>
-            <button type="button" [ngClass]="getItem.actionType ? 'btn-cancel' : 'btn-edit' " (click)="onEditRecMedi(key)">{{ getItem.actionType ? "取消" : "編輯" }}</button>
+            <button
+              type="button"
+              *ngIf="getItem.actionType"
+              ngClass="btn-sucess"
+              (click)="onAddRecMedi(key, getItem.actionType)"
+            >
+              送出
+            </button>
+            <button type="button" [ngClass]="getItem.actionType ? 'btn-cancel' : 'btn-edit'" (click)="onEditRecMedi(key)">
+              {{ getItem.actionType ? "取消" : "編輯" }}
+            </button>
           </td>
         </tr>
       </tbody>
     </table>
-    <div class="page">
-      <app-pagination [(val)]="ValChange" (update)="onUpdate($event)" (valChange)="onValChange($event)"></app-pagination>
-    </div>
+    <div class="page"><app-pagination [(val)]="ValChange" (update)="onUpdate($event)"></app-pagination></div>
   </form>
 </div>

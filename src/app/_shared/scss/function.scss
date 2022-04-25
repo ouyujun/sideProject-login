@@ -1,0 +1,6 @@
+@function lightVar($color) {
+  @if not map-has-key($light-theme-config, $color) {
+    @warn "沒有 `#{$color}`";
+  }
+  @return var($color);
+}

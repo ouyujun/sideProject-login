@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import './reset.scss';
-@import 'material-icons/iconfont/material-icons.css';
+@import './app//_shared/scss/function.scss';
 @import './app/_shared/scss/base.scss';
-@import './app/_shared/scss/mixin.scss';
 @import './app/_shared/scss/pages.scss';
+@import './app//_shared//scss/btn.scss';
+@import 'material-icons/iconfont/material-icons.css';

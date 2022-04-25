@@ -14,20 +14,22 @@ export class CatchApiService {
 
   configApiUrl = environment.apiUrl;
   configUrl = environment.configUrl;
-  config2Url = environment.config2Url;
   objToken=environment.objToken;
 
   //這邊有兩種類型 recMediList、addFeedBack共同使用這個function
   constructor(private http: HttpClient) { }
 
-
+/**
+ * 取得會員資料
+ * @function getMember
+ */
   getMember(): Observable<any> {
     return this.http.get<any>(this.configUrl);
   }
-  getMemberInfo(): Observable<any> {
-    return this.http.get<any>(this.config2Url);
-  }
-
+/**
+ * 共用API Function
+ * @function myRecMediPost
+ */
   myRecMediPost(data: Object, apiUrl: string) {
     const objToken = { Token: this.objToken }
     let obj3 = { ...data, ...objToken };

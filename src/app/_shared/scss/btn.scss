@@ -1,0 +1,48 @@
+button {
+  margin       : 2px;
+  padding      : 8px;
+  border-radius: 8px;
+  border       : none;
+}
+//預設
+.btn {
+  &-default {
+    background-color: var(--header);
+    color           : lightVar(--bg);
+
+    &:hover {
+      background-color: lightVar(--wrapper);
+      cursor          : pointer;
+    }
+  }
+}
+//取消
+.btn-cancel {
+  background-color: #888;
+  color           : #fff;
+
+  &:hover {
+    background-color: #bbb;
+    cursor          : pointer;
+  }
+//編輯
+  &-edit {
+    background-color: rgb(255, 207, 85);
+    color           : #333;
+
+    &:hover {
+      background-color: rgb(255, 216, 116);
+      cursor          : pointer;
+    }
+  }
+//送出
+  &-sucess {
+    background-color: rgb(113, 172, 81);
+    color           : #333;
+
+    &:hover {
+      background-color: rgb(161, 233, 122);
+      cursor          : pointer;
+    }
+  }
+}

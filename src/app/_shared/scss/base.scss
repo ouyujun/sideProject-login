@@ -24,10 +24,7 @@ $dark-theme-config:(dark:($bg : #333,
     $footer : #333,
     $page : #bbb,
     $err : rgb(222, 99, 99),
-
   ), );
-
-
 
 //存成另一個變數  動態變數
 :root {
@@ -43,63 +40,6 @@ $dark-theme-config:(dark:($bg : #333,
   }
 }
 
-@function lightVar($color) {
-    @if not map-has-key($light-theme-config,$color) {
-      @warn "沒有 `#{$color}`";
-    }
-    @return map-get($light-theme-config,$color);
-}
-
-
-button {
-  margin       : 2px;
-  padding      : 8px;
-  border-radius: 8px;
-  border       : none;
-}
-
-.btn-default {
-  background-color: var(--header);
-  color           : sqrt(--bg);
-
-  &:hover {
-    background-color: var(--wrapper);
-    cursor          : pointer;
-  }
-}
-
-.btn-cancel {
-  background-color: #888;
-  color           : #fff;
-
-  &:hover {
-    background-color: #bbb;
-    cursor          : pointer;
-  }
-}
-
-.btn-edit {
-  background-color: rgb(255, 207, 85);
-  color           : #333;
-
-  &:hover {
-    background-color: rgb(255, 216, 116);
-    cursor          : pointer;
-  }
-}
-
-.btn-sucess {
-  background-color: rgb(113, 172, 81);
-  color           : #333;
-
-  &:hover {
-    background-color: rgb(161, 233, 122);
-    cursor          : pointer;
-  }
-}
-
 p {
-  color: lightVar(abc);
-  //function抓--abc比對有沒有
-  //1.
+  color: lightVar(--abc);
 }
