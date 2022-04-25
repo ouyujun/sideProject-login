@@ -137,7 +137,7 @@ export class PaginationComponent implements OnInit, OnChanges {
       // 回調函式
       this.update.emit(this.now);
       // 重新顯示
-      // this.roll();
+      this.roll();
     }
   }
 
@@ -187,6 +187,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges(): void {
+    console.log(this.val);
     this.run(this.val);
   }
 }

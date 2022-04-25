@@ -205,14 +205,14 @@
             <ng-template #StatusList> {{ item.Status }}</ng-template>
           </td>
           <td>
-            <button type="button" ngClass="btn-sucess" (click)="onAddRecMedi(key,item.actionType)">送出</button>
+            <button type="button" *ngIf="item.actionType" ngClass="btn-sucess" (click)="onAddRecMedi(key,item.actionType)">送出</button>
             <button type="button" [ngClass]="item.actionType ? 'btn-cancel' : 'btn-edit' " (click)="onEditRecMedi(key)">{{ item.actionType ? "取消" : "編輯" }}</button>
           </td>
         </tr>
       </tbody>
     </table>
     <div class="page">
-      <app-pagination [val]="this.ValChange" (valChange)="onValChange($event)" (update)="onUpdate($event)"></app-pagination>
+      <app-pagination [(val)]="ValChange" (update)="onUpdate($event)" (valChange)="onValChange($event)"></app-pagination>
     </div>
   </form>
 </div>

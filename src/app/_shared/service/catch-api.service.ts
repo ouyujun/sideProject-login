@@ -16,6 +16,7 @@ export class CatchApiService {
   configUrl = environment.configUrl;
   config2Url = environment.config2Url;
   objToken=environment.objToken;
+
   //這邊有兩種類型 recMediList、addFeedBack共同使用這個function
   constructor(private http: HttpClient) { }
 

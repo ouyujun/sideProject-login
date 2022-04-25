@@ -29,7 +29,7 @@
       <!-- 電腦版顯示數字按鈕 開始 -->
       <button
         *ngFor="let item of num"
-        class="btn full"
+        class="btn full btn-default"
         (click)="move(item)"
         [class.now]="item === now"
         [textContent]="item"
