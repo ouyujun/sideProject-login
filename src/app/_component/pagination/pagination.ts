@@ -14,15 +14,17 @@ export interface Pager {
 }
 
 /** 分頁回傳格式 */
-export interface PagerData {
-  /** 資料筆數 */
-  DataCount: number;
+export class PagerData {
+  constructor(
+    /** 資料筆數 */
+    public DataCount: number = 10,
+    /** 當前頁數 */
+    public PageIndex: number=1,
+    /** 資料內容 */
+    public DataResult: any[]=[],
+  ) {
 
-  /** 當前頁數 */
-  PageIndex: number;
-
-  /** 資料內容 */
-  DataResult: any[];
+  }
 }
 
 export class PagerFind {
@@ -31,5 +33,5 @@ export class PagerFind {
    * @param PageIndex 當前頁數
    * @param PageCount 每頁筆數
    */
-  constructor(public PageIndex = 1, public PageCount = PAGER_MAX_ROW) {}
+  constructor(public PageIndex = 1, public PageCount = PAGER_MAX_ROW) { }
 }

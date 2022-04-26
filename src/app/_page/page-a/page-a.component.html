@@ -1,5 +1,5 @@
 <div class="page-body">
-  <button type="button btn-edit" (click)="showAddRecMedi()">新增紀錄</button>
+  <button type="buttont" class="btn-default"(click)="showAddRecMedi()">新增紀錄</button>
   <form #myForm="ngForm">
     <table>
       <thead>
@@ -136,7 +136,7 @@
             <!--Mill-->
             <ng-container *ngIf="getItem.actionType; else MillList">
               <input
-                type="text"
+                type="number"
                 class="form-control"
                 id="Mill"
                 [(ngModel)]="getItem.Mill"
@@ -241,7 +241,7 @@
             <!--Status-->
             <ng-container *ngIf="getItem.actionType; else StatusList">
               <input
-                type="text"
+                type="number"
                 class="form-control"
                 id="Status"
                 required

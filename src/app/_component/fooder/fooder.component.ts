@@ -6,8 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./fooder.component.scss']
 })
 export class FooderComponent implements OnInit {
-  constructor() {
-  }
+  constructor() {}
   ngOnInit(): void {
   }
 

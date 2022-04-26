@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   loginModel = new MembersList();
   isUserInfo = new userState();
-
   subscription!: Subscription;
 
   constructor(private MemberService: MemberManagedService) {
@@ -24,11 +23,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.isUserInfo.userMail = res.userMail;
       this.isUserInfo.userState = res.userState;
     })
-
-
   }
-  ngOnInit(): void { }
 
+  ngOnInit(): void { }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }

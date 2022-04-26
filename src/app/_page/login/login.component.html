@@ -1,23 +1,37 @@
 <form #myForm="ngForm" (ngSubmit)="onLogin()">
-    <!--how to get elment-->
-    <p>
-        <label for="email">帳號：</label>
-        <input type="email" class="form-control" id="email" newMailRulesName required [(ngModel)]="loginModel.email"
-            name="email" #email="ngModel">
-        <app-message-err [element]="email"></app-message-err>
-    </p>
-    <p class="err" *ngIf="this.isUserInfo.userState">帳號或密碼錯誤</p>
-    <p>TODO: remove this: {{loginModel.email}}</p>
-    <p>
-        <label for="password">密碼：</label>
-        <input type="password" class="form-control" id="password" required [(ngModel)]="loginModel.password"
-            minlength="6" maxlength="10" name="password" #password="ngModel" autocomplete>
-        <app-message-err [element]="password"></app-message-err>
-    </p>
-    <p>TODO: remove this: {{loginModel.password}}</p>
-    <p>
-        <button type="submit" class="btn-default">Log in</button>
-    </p>
-    <!-- <p>{{loginModel | json}}</p> -->
-    <!-- //預覽資料狀況 -->
+  <!--how to get elment-->
+  <p>
+    <label for="email">帳號：</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      newMailRulesName
+      required
+      [(ngModel)]="loginModel.email"
+      name="email"
+      #email="ngModel"
+    />
+    <app-message-err [element]="email"></app-message-err>
+  </p>
+  <p class="err" *ngIf="this.isUserInfo.userState">帳號或密碼錯誤</p>
+  <p>TODO: remove this: {{ loginModel.email }}</p>
+  <p>
+    <label for="password">密碼：</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      required
+      [(ngModel)]="loginModel.password"
+      minlength="6"
+      maxlength="10"
+      name="password"
+      #password="ngModel"
+      autocomplete
+    />
+    <app-message-err [element]="password"></app-message-err>
+  </p>
+  <p>TODO: remove this: {{ loginModel.password }}</p>
+  <p><button type="submit" class="btn-default">Log in</button></p>
 </form>

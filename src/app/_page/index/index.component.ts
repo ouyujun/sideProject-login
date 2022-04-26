@@ -12,16 +12,13 @@ export class IndexComponent implements OnInit, OnDestroy {
   isUserMail!: string | null;
   subscription!: Subscription;
 
-  constructor(private MemberService: MemberManagedService) {
+  constructor(private MemberService: MemberManagedService) {}
+  ngOnInit(): void {
     this.subscription = this.MemberService.isUser.subscribe((res: userState) => {
       this.isUserMail = res.userMail;
     })
   }
-  ngOnInit(): void {
-  }
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
   }
-
-
 }

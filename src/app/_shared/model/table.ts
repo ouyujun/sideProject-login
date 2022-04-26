@@ -51,7 +51,7 @@ export class apiFeedback {
  */
 export class recMediData {
   constructor(
-    public DataCount: number | null = null,
+    public DataCount: number = 0,
     public DataResult: recMediDataResult[] = []
     ) { }
 }
@@ -68,12 +68,11 @@ export class recMediDataResult {
     public EndDate: string | null = null,
     public Instructions: string | null = null,
     public MedicineName: string | null = null,
-    public Mill: number | string | null = null,
+    public Mill: number| null = null,
     public No: string | null = null,
     public OrgAccount: string | null = null,
-    public Seq: string | null = null,
     public StartDate: string | null = null,
-    public Status: number | string | null = null,
+    public Status: number | null = null,
     public Time1: string | null = null,
     public Time2: string | null = null,
     public Time3: string | null = null,

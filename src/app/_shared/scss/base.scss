@@ -1,21 +1,24 @@
-$bg      : --bg;
-$font    : --font;
-$header  : --header;
-$wrapper : --wrapper;
-$footer  : --footer;
-$page    : --page;
-$err     : --err;
-$abc     : --abc;
+$bg               : --bg;
+$font             : --font;
+$header           : --header;
+$wrapper          : --wrapper;
+$footer           : --footer;
+$page             : --page;
+$err              : --err;
+$abc              : --abc;
+$defaultBtnBorder : --defaultBtnBorder;
+$defaultBtnBg     : --defaultBtnBg;
 
 $light-theme-config:(light:($bg : #fff,
     $font : #333,
-    $header : rgb(98, 141, 242),
+    $header :rgb(76, 167, 252),
     $wrapper : #ededed,
     $footer : #bbb,
     $page : #fff,
     $err : darkred,
-    $abc:green
-    ), );
+    $defaultBtnBorder:rgb(60, 121, 178),
+    $defaultBtnBg:#fff,
+    $abc:green), );
 
 $dark-theme-config:(dark:($bg : #333,
     $font : #fff,
@@ -24,14 +27,18 @@ $dark-theme-config:(dark:($bg : #333,
     $footer : #333,
     $page : #bbb,
     $err : rgb(222, 99, 99),
+    $defaultBtnBorder:rgb(99, 187, 238),
+    $defaultBtnBg:#fff,
   ), );
 
 //存成另一個變數  動態變數
 :root {
   $light: map-merge($light-theme-config, $dark-theme-config);
+
   @each $theme,
   $colorMap in $light {
     .#{$theme} {
+
       @each $colorKey,
       $colorValue in $colorMap {
         #{$colorKey}: $colorValue;

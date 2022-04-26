@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { apiFeedback } from '../model/table';
+import { apiFeedback, recMediData } from '../model/table';
 import { environment } from 'src/environments/environment';
 // import { catchError, retry } from 'rxjs/operators'; <--處理錯誤
 

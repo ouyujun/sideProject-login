@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   apiUrl: "http://222.191.229.163:7003/",
   configUrl: '../../assets/member.json',
-  objToken: '2zgDRxcfsSegz16ITtH9cc0iJxxNEHxBJlajY5hIakY'
+  objToken: 'L/9Pf/WFvlAW9MdngieJtAhpSeyXoCdV8twUdGs5yC4='
 };
 
 /*

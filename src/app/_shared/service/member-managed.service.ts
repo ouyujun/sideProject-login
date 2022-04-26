@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject} from 'rxjs';
 import { MembersList, userState } from '../model/members';
 import { CatchApiService } from '../service/catch-api.service'
 
@@ -10,7 +10,13 @@ import { CatchApiService } from '../service/catch-api.service'
 export class MemberManagedService {
 
   isUser = new BehaviorSubject<userState>(new userState());
-  constructor(private mainservice: CatchApiService, private router: Router) { }
+  constructor(private mainservice: CatchApiService, private router: Router) {
+    const strorageSelectedFilter = sessionStorage.getItem('user');
+    if (strorageSelectedFilter) {
+      const loginObj = JSON.parse(strorageSelectedFilter);
+      this.isUser.next(loginObj)
+    }
+  }
 
   //登入使用者，並通知所有訂閱者
   login(group: MembersList): void {
@@ -19,7 +25,8 @@ export class MemberManagedService {
       if (group) {
         const rule = res.findIndex((item: MembersList) => item.email === group.email && item.password === group.password) !== -1;
         if (rule) {
-          this.isUser.next(new userState(group.email,false))
+          this.isUser.next(new userState(group.email, false))
+          sessionStorage.setItem('user', JSON.stringify(this.isUser.getValue()))
           this.router.navigate(['./page1']);
           return
         } else {
@@ -34,7 +41,7 @@ export class MemberManagedService {
   */
   logout(): void {
     this.isUser.next(new userState())
+    sessionStorage.clear();
     this.router.navigate(['./login']);
   }
-
 }

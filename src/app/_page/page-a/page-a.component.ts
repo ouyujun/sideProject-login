@@ -1,3 +1,4 @@
+import { recMediData } from './../../_shared/model/table';
 import { CatchApiService } from './../../_shared/service/catch-api.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { inputParameter, listCloun, recMediDataResult, apiFeedback } from 'src/app/_shared/model/table';
@@ -20,11 +21,7 @@ export class PageAComponent implements OnInit {
   * 雙向綁定父子層
   * @param ValChange
   */
-  ValChange: PagerData = {
-    DataCount: 10,
-    PageIndex: 1,
-    DataResult: []
-  };
+  ValChange = new PagerData;
   /**
     * GetRecMediListAPI入參
     * @param inputParameter
@@ -47,15 +44,16 @@ export class PageAComponent implements OnInit {
   onGetRecMedi(num: number) {
     this.inputParameter.PageIndex = num; //改第幾頁
     this.CatchApiService.myRecMediPost(this.inputParameter, 'HealthCare/GetRecMediList').subscribe((res: apiFeedback) => {
+      this.ValChange = new PagerData((res.Data as recMediData).DataCount, num, (res.Data as recMediData).DataResult);
       //得到DataCount總筆數,第一頁,DataResult
-      this.recMediResult = res.Data?.DataResult;
+      this.recMediResult = (res.Data as recMediData).DataResult;
     })
   }
 
   //1.打開input新增
   showAddRecMedi() {
-    const RecMediList: recMediDataResult[] = JSON.parse(JSON.stringify(this.recMediResult));
-    RecMediList.unshift(new recMediDataResult());//再去新增一
+    const RecMediList: recMediDataResult[] = JSON.parse(JSON.stringify(this.recMediResult)); //深拷貝
+    RecMediList.unshift(new recMediDataResult());//再去新增
     RecMediList[0].actionType = '新增';//第二列將新增的欄位填為true
     this.recMediResult = RecMediList;
   }
@@ -68,7 +66,7 @@ export class PageAComponent implements OnInit {
     }
     if (actionType === '新增') {
       this.CatchApiService.myRecMediPost(this.recMediResult[index], 'HealthCare/AddRecMedi').subscribe(res => {
-        this.recMediResult.splice(index, 1);
+        this.onGetRecMedi(1);
       });
       return
     }
