@@ -249,6 +249,10 @@
                 name="{{ 'Status' + key }}"
                 #Status="ngModel"
               />
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
               <app-message-err [element]="Status"></app-message-err>
             </ng-container>
             <ng-template #StatusList> {{ getItem.Status }}</ng-template>

@@ -13,7 +13,6 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     //'AuthGuard#canActivate 被觸發了, 你沒有授權！將跳轉回前台頁面'
-
     this.memberService.isUser.subscribe((res: userState) => {
       if (!res.userMail) {
         this.router.navigate(['/login']);

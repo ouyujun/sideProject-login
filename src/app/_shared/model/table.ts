@@ -19,7 +19,6 @@ export class listCloun {
  */
 export class inputParameter {
   constructor(
-    public Token: string = '2zgDRxcfsSegz16ITtH9cc0iJxxNEHxBJlajY5hIakY=',
     public OrgAccount: string | null = 'S101',
     public LoginAccount: string | null = 'U01',
     public Data: any | null = { 'NoList': [{ 'Values': '107025' }] },
@@ -53,7 +52,7 @@ export class recMediData {
   constructor(
     public DataCount: number = 0,
     public DataResult: recMediDataResult[] = []
-    ) { }
+  ) { }
 }
 /**
  * 定義取得列表內容（DataResult）
@@ -68,17 +67,17 @@ export class recMediDataResult {
     public EndDate: string | null = null,
     public Instructions: string | null = null,
     public MedicineName: string | null = null,
-    public Mill: number| null = null,
+    public Mill: number | null = null,
     public No: string | null = null,
     public OrgAccount: string | null = null,
     public StartDate: string | null = null,
-    public Status: number | null = null,
+    public Status: 0 | 1 | null = null,
     public Time1: string | null = null,
     public Time2: string | null = null,
     public Time3: string | null = null,
     public Time4: string | null = null,
     public Type: string | null = null,
-    public actionType: string | null = null,
+    public actionType: '新增' | '編輯' | null = null,
     //與interface一樣先定義類型
     //利用constructor特性去賦予值(沒有賦予值的話是無法new成一個物件，會報錯～)
   ) { }

@@ -44,9 +44,11 @@ export class PageAComponent implements OnInit {
   onGetRecMedi(num: number) {
     this.inputParameter.PageIndex = num; //改第幾頁
     this.CatchApiService.myRecMediPost(this.inputParameter, 'HealthCare/GetRecMediList').subscribe((res: apiFeedback) => {
-      this.ValChange = new PagerData((res.Data as recMediData).DataCount, num, (res.Data as recMediData).DataResult);
-      //得到DataCount總筆數,第一頁,DataResult
-      this.recMediResult = (res.Data as recMediData).DataResult;
+      if(res.Msg==='查詢成功(501)'){
+        this.ValChange = new PagerData((res.Data as recMediData).DataCount, num, (res.Data as recMediData).DataResult);
+        //得到DataCount總筆數,第一頁,DataResult
+        this.recMediResult = (res.Data as recMediData).DataResult;
+      }else{alert(res.Msg)}
     })
   }
 
@@ -59,22 +61,21 @@ export class PageAComponent implements OnInit {
   }
 
   //2.新增/編輯送出
-  onAddRecMedi(index: number, actionType: string | null) {
-    if (!this.myform.valid) {
-      this.myform.form.markAllAsTouched();
-      return
-    }
-    if (actionType === '新增') {
-      this.CatchApiService.myRecMediPost(this.recMediResult[index], 'HealthCare/AddRecMedi').subscribe(res => {
-        this.onGetRecMedi(1);
-      });
-      return
-    }
-    if (actionType === '編輯') {
-      this.CatchApiService.myRecMediPost(this.recMediResult[index], 'HealthCare/UpdateRecMedi').subscribe(res => {
-        this.recMediResult[index].actionType = '';
-      });
-      return
+  onAddRecMedi(index: number, actionType: '新增' | '編輯' | null) {
+    if (!this.myform.valid) { this.myform.form.markAllAsTouched(); }
+    switch (actionType) {
+      case '新增':
+        this.CatchApiService.myRecMediPost(this.recMediResult[index], 'HealthCare/AddRecMedi').subscribe((res: apiFeedback) => {
+          res.Msg === "新增成功(201)" ? this.onGetRecMedi(1) : alert('新增失敗')
+        });
+        break;
+      case '編輯':
+        this.CatchApiService.myRecMediPost(this.recMediResult[index], 'HealthCare/UpdateRecMedi').subscribe((res: apiFeedback) => {
+          this.recMediResult[index].actionType = null;
+        });
+        break;
+      default:
+        break;
     }
   }
   //3.編輯/取消
@@ -86,7 +87,7 @@ export class PageAComponent implements OnInit {
         this.recMediResult.splice(index, 1);
         break;
       case '編輯'://有就判斷是否為需編輯或取消編輯
-        this.recMediResult[index].actionType = '';
+        this.recMediResult[index].actionType = null;
         break;
       default://有就判斷是否為需編輯或取消編輯
         this.recMediResult[index].actionType = '編輯';

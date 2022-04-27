@@ -31,11 +31,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onLogin(): void {
-    if (!this.myform.valid) {
-      this.myform.form.markAllAsTouched();
-      return
-    } else {
-      this.MemberService.login(this.loginModel);
-    }
+    this.myform.valid ? this.MemberService.login(this.loginModel) : this.myform.form.markAllAsTouched();
   }
 }
