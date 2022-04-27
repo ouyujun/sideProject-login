@@ -1,12 +1,17 @@
-.page-body{
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    padding: 2% 5%;
+.page-body {
+  box-sizing: border-box;
+  width     : 100%;
+  height    : 100%;
+  padding   : 2% 5%;
 }
-.err{
-    color: lightVar(--err);
-    height: 24x;
-    line-height: 24px;
-    font-size: 14px;
+
+.err {
+  color      : lightVar(--err);
+  height     : 24x;
+  line-height: 24px;
+  font-size  : 14px;
+}
+
+p {
+  color: lightVar(--abc);
 }

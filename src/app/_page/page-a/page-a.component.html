@@ -1,5 +1,5 @@
 <div class="page-body">
-  <button type="buttont" class="btn-default"(click)="showAddRecMedi()">新增紀錄</button>
+  <button type="buttont" class="btn-default" (click)="showAddRecMedi()">新增紀錄</button>
   <form #myForm="ngForm">
     <table>
       <thead>
@@ -239,23 +239,22 @@
           </td>
           <td>
             <!--Status-->
-            <ng-container *ngIf="getItem.actionType; else StatusList">
-              <input
-                type="number"
-                class="form-control"
-                id="Status"
-                required
-                [(ngModel)]="getItem.Status"
-                name="{{ 'Status' + key }}"
-                #Status="ngModel"
-              />
+            <ng-container>
               <label class="switch">
-                <input type="checkbox">
+                <input
+                  type="checkbox"
+                  class="form-control"
+                  id="Status"
+                  [disabled]="!getItem.actionType"
+                  [(ngModel)]="getItem.Status"
+                  [value]="getItem.Status===1"
+                  name="{{ 'Status' + key }}"
+                  #Status="ngModel"
+                />
                 <span class="slider"></span>
               </label>
               <app-message-err [element]="Status"></app-message-err>
             </ng-container>
-            <ng-template #StatusList> {{ getItem.Status }}</ng-template>
           </td>
           <td>
             <button
@@ -273,6 +272,6 @@
         </tr>
       </tbody>
     </table>
-    <div class="page"><app-pagination [(val)]="ValChange" (update)="onUpdate($event)"></app-pagination></div>
+    <div class="page"><app-pagination [(val)]="valChange" (update)="onUpdate($event)"></app-pagination></div>
   </form>
 </div>

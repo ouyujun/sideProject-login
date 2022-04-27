@@ -34,7 +34,6 @@ $dark-theme-config:(dark:($bg : #333,
 //存成另一個變數  動態變數
 :root {
   $light: map-merge($light-theme-config, $dark-theme-config);
-
   @each $theme,
   $colorMap in $light {
     .#{$theme} {
@@ -47,6 +46,4 @@ $dark-theme-config:(dark:($bg : #333,
   }
 }
 
-p {
-  color: lightVar(--abc);
-}
+

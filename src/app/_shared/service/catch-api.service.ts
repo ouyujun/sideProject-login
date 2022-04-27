@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { apiFeedback, recMediData } from '../model/table';
+import { apiFeedback, recMediData,recMediDataResult } from '../model/table';
 import { environment } from 'src/environments/environment';
 // import { catchError, retry } from 'rxjs/operators'; <--處理錯誤
 @Injectable({
@@ -28,7 +28,8 @@ export class CatchApiService {
    * @function myRecMediPost
    */
   myRecMediPost(data: Object, apiUrl: string) {
-    let obj3 = { ...data, Token: this.objToken };
+    (data as recMediDataResult).Status=(data as recMediDataResult).Status?1:0;
+    const obj3 = { ...data, Token: this.objToken };
     return this.http.post<apiFeedback>(`${this.configApiUrl}${apiUrl}`, obj3);
   }
 }

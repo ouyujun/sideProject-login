@@ -21,7 +21,7 @@ export class PageAComponent implements OnInit {
   * 雙向綁定父子層
   * @param ValChange
   */
-  ValChange = new PagerData;
+  valChange = new PagerData;
   /**
     * GetRecMediListAPI入參
     * @param inputParameter
@@ -30,7 +30,7 @@ export class PageAComponent implements OnInit {
   //欄位名稱
   cloum = new listCloun();
 
-  constructor(private CatchApiService: CatchApiService) { }
+  constructor(private catchApiService: CatchApiService) { }
 
   ngOnInit(): void {
     this.onGetRecMedi(1);//呼叫API 第一頁
@@ -43,12 +43,13 @@ export class PageAComponent implements OnInit {
   //取得RecMediList
   onGetRecMedi(num: number) {
     this.inputParameter.PageIndex = num; //改第幾頁
-    this.CatchApiService.myRecMediPost(this.inputParameter, 'HealthCare/GetRecMediList').subscribe((res: apiFeedback) => {
-      if(res.Msg==='查詢成功(501)'){
-        this.ValChange = new PagerData((res.Data as recMediData).DataCount, num, (res.Data as recMediData).DataResult);
+    this.catchApiService.myRecMediPost(this.inputParameter, 'HealthCare/GetRecMediList').subscribe((res: apiFeedback) => {
+      if (res.Msg === '查詢成功(501)') {
+        const recMediData: recMediData = res.Data;
+        this.valChange = new PagerData(recMediData.DataCount, num, recMediData.DataResult);
         //得到DataCount總筆數,第一頁,DataResult
-        this.recMediResult = (res.Data as recMediData).DataResult;
-      }else{alert(res.Msg)}
+        this.recMediResult = recMediData.DataResult;
+      } else { alert(res.Msg) }
     })
   }
 
@@ -65,12 +66,12 @@ export class PageAComponent implements OnInit {
     if (!this.myform.valid) { this.myform.form.markAllAsTouched(); }
     switch (actionType) {
       case '新增':
-        this.CatchApiService.myRecMediPost(this.recMediResult[index], 'HealthCare/AddRecMedi').subscribe((res: apiFeedback) => {
+        this.catchApiService.myRecMediPost(this.recMediResult[index], 'HealthCare/AddRecMedi').subscribe((res: apiFeedback) => {
           res.Msg === "新增成功(201)" ? this.onGetRecMedi(1) : alert('新增失敗')
         });
         break;
       case '編輯':
-        this.CatchApiService.myRecMediPost(this.recMediResult[index], 'HealthCare/UpdateRecMedi').subscribe((res: apiFeedback) => {
+        this.catchApiService.myRecMediPost(this.recMediResult[index], 'HealthCare/UpdateRecMedi').subscribe((res: apiFeedback) => {
           this.recMediResult[index].actionType = null;
         });
         break;
